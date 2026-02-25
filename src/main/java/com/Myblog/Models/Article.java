@@ -1,12 +1,16 @@
 package com.Myblog.Models;
 
 import jakarta.persistence.*;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.List;
 
+//Entity is a java object that will convert to JSON or JSON to java object
 @Entity // Tells JPA to create a table for this class, without it will ignore it
 public class Article {
 
+    @Setter
     @Id // Marks this as the Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Database handles ID incrementing
     private Long id;
@@ -35,6 +39,12 @@ public class Article {
         this.publishDate = publishDate;
         this.tags = tags;
     }
+    // for Update Getters and Setters go here...
 
-    // Getters and Setters go here...
+    public Long getId() { return id; }
+    public String getTitle() { return title; }
+    public String getContent() { return content; }
+    public LocalDate getPublishDate() { return publishDate; }
+    public List<String> getTags() { return tags; }
+
 }

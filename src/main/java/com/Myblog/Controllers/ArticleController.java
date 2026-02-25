@@ -25,8 +25,26 @@ public class ArticleController {
 
     // POST: Create a new article
     @PostMapping
+    //@RequestBody tells Spring Boot to look at the JSON data coming from
+    //the user's web request and "map" it into a Java Object.
     public Article create(@RequestBody Article article) {
+        //spring take the result of saveArtivle convert to json and send back
         return service.saveArticle(article);
+    }
+
+    @PutMapping("{id}")
+    public Article update(@PathVariable Long id, @RequestBody Article newArticle) {
+
+        newArticle.setId(id);
+        return service.update(newArticle);
+
+    }
+
+    @DeleteMapping("{id}")
+    public String delete(@PathVariable Long id) {
+
+         service.deleteById(id);
+         return "Article with ID " + id + " has been successfully deleted.";
     }
 
 }
