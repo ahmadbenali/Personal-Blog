@@ -24,14 +24,19 @@ public class ArticleService {
         return repository.findById(id).orElse(null);
     }
 
-    public Article update(Article article)
-    {
-        return repository.save(article);
-    }
-    //??
     public Iterable<Article> getAllArticles()
     {
         return repository.findAll();
+    }
+
+    public Article saveArticle(Article article)
+    {
+        return repository.save(article);
+    }
+
+    public Article update(Article article)
+    {
+        return repository.save(article);
     }
 
     public void deleteById(Long id)
@@ -39,11 +44,6 @@ public class ArticleService {
          repository.deleteById(id);
     }
 
-
-    public Article saveArticle(Article article)
-    {
-        return repository.save(article);
-    }
 
 
 }

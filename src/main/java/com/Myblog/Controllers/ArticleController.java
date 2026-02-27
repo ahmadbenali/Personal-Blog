@@ -23,6 +23,11 @@ public class ArticleController {
         return service.getAllArticles();
     }
 
+    @GetMapping("{id}")
+    public Article getOne(@PathVariable long id) {
+        return service.findById(id);
+    }
+
     // POST: Create a new article
     @PostMapping
     //@RequestBody tells Spring Boot to look at the JSON data coming from
